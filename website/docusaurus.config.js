@@ -30,6 +30,7 @@ const localeMapping = new Map(
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
+  themes: [require.resolve('docusaurus-theme-ai-search-upstash')],
   i18n,
   title: 'Jest',
   titleDelimiter: '·',
@@ -62,7 +63,7 @@ const config = {
           sidebarPath: path.resolve(__dirname, './sidebars.json'),
           remarkPlugins: [
             [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
-            require('docusaurus-remark-plugin-tab-blocks'),
+            [require('docusaurus-remark-plugin-tab-blocks').default, {}],
           ],
         },
         blog: {
@@ -87,6 +88,7 @@ const config = {
         pages: {
           remarkPlugins: [
             [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
+            [require('docusaurus-remark-plugin-tab-blocks').default, {}],
           ],
         },
       }),
@@ -304,11 +306,15 @@ const config = {
         copyright: `<p>Copyright <a href="https://openjsf.org">OpenJS Foundation</a> and Jest contributors. All rights reserved. The <a href="https://openjsf.org">OpenJS Foundation</a> has registered trademarks and uses trademarks.  For a list of trademarks of the <a href="https://openjsf.org">OpenJS Foundation</a>, please see our <a href="https://trademark-policy.openjsf.org">Trademark Policy</a> and <a href="https://trademark-list.openjsf.org">Trademark List</a>.  Trademarks and logos not indicated on the <a href="https://trademark-list.openjsf.org">list of OpenJS Foundation trademarks</a> are trademarks&trade; or registered&reg; trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them.</p>
 <p><a href="https://openjsf.org">The OpenJS Foundation</a> | <a href="https://terms-of-use.openjsf.org">Terms of Use</a> | <a href="https://privacy-policy.openjsf.org">Privacy Policy</a> | <a href="https://bylaws.openjsf.org">Bylaws</a> | <a href="https://code-of-conduct.openjsf.org">Code of Conduct</a> | <a href="https://trademark-policy.openjsf.org">Trademark Policy</a> | <a href="https://trademark-list.openjsf.org">Trademark List</a> | <a href="https://www.linuxfoundation.org/cookies">Cookie Policy</a></p>Built with Docusaurus.`,
       },
-      algolia: {
-        indexName: 'jest-v2',
-        appId: 'HP439UUSOL',
-        apiKey: 'e5e670fd16f8f17caada79d6b0931682',
-        contextualSearch: true,
+      upstash: {
+        enableAiChat: true,
+        aiChatApiEndpoint:
+          'https://deploy-ai-chat-api-endpoint.vercel.app/api/ask-ai',
+        upstashVectorRestUrl:
+          'https://romantic-parakeet-26697-eu1-vector.upstash.io',
+        upstashVectorReadOnlyRestToken:
+          'ABsFMHJvbWFudGljLXBhcmFrZWV0LTI2Njk3LWV1MWFkbWluTlRkbU0yUXhNbVl0TW1Ka015MDBOakkwTFdKa1lUUXRZVGN4T1RWa01UVTJOalZs',
+        upstashVectorIndexNamespace: 'jest-website',
       },
     }),
 };
