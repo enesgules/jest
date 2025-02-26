@@ -30,7 +30,7 @@ const localeMapping = new Map(
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  themes: [require.resolve('docusaurus-theme-ai-search-upstash')],
+  themes: [require.resolve('@upstash/docusaurus-theme-ai-search')],
   i18n,
   title: 'Jest',
   titleDelimiter: '·',
